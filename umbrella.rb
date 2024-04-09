@@ -50,7 +50,32 @@ nxt_hr_temp = nxt_hr_data.fetch("temperature")
 
 pp "The temperature for the next hour is " + nxt_hr_temp.to_s + " degrees farenheit"
 
+next_12_hr_data = data[1..12]
 
+pp next_12_hr_data  
+
+
+next_twelve_hours.each do |hour_hash|
+  precip_prob = hour_hash.fetch("precipProbability")
+
+  if precip_prob > precip_prob_threshold
+    any_precipitation = true
+
+    precip_time = Time.at(hour_hash.fetch("time"))
+
+    seconds_from_now = precip_time - Time.now
+
+    hours_from_now = seconds_from_now / 60 / 60
+
+    puts "In #{hours_from_now.round} hours, there is a #{(precip_prob * 100).round}% chance of precipitation."
+  end
+end
+
+if any_precipitation == true
+  puts "You might want to take an umbrella!"
+else
+  puts "You probably won't need an umbrella."
+end
 
 
 
