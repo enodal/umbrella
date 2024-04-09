@@ -28,10 +28,27 @@ longitude = location.fetch("lng")
 
 weather_url = "https://api.pirateweather.net/forecast/" + ENV.fetch("PIRATE")+ "/" + latitude.to_s + "," + longitude.to_s 
 
-pp weather_url
+weather = HTTP.get(weather_url)
 
+raw_w_response = weather.to_s
 
+parse_w_response = JSON.parse(raw_w_response)
 
+current = parse_w_response.fetch("currently")
+
+temp = current.fetch("temperature")
+
+pp "The current temperature in Chicago is " + temp.to_s + " degrees farenheit."
+
+hourly = parse_w_response.fetch("hourly")
+
+data = hourly.fetch("data")
+
+nxt_hr_data = data.at(1)
+
+nxt_hr_temp = nxt_hr_data.fetch("temperature")
+
+pp "The temperature for the next hour is " + nxt_hr_temp.to_s + " degrees farenheit"
 
 
 
