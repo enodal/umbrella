@@ -30,14 +30,14 @@ if uni == uni_name.gsub("%20", " ")
   programs = uni_data.fetch("programs")
   cip = programs.fetch("cip_4_digit")
   pp "What Major?"
-  what_major = gets.chomp.titleize + "."
+  what_major = gets.chomp.upcase + "."
   pp what_major
   cip.each do |title|
     major = title.fetch("title")
     credential = title.fetch("credential")
     level = credential.fetch("title")
     if level == "Bachelor's Degree" &&
-      major == what_major
+      major.upcase == what_major
       pp "lfg"
     end
   end
