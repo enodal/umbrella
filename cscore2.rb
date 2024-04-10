@@ -12,7 +12,7 @@ pp uni_name
 
 cscore_key = ENV.fetch("CSCORE")
 
-cscore_url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key=#{cscore_key}&school.name=#{uni_name}"
+cscore_url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key=#{cscore_key}&school.name=#{uni_name}&fields=results.latest.school.name"
 
 pp cscore_url
 
