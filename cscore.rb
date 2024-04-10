@@ -38,7 +38,7 @@ if uni == uni_name.gsub("%20", " ")
     level = credential.fetch("title")
     if level == "Bachelor's Degree" &&
       major.upcase == what_major
-      pp "lfg"
+      
     end
   end
 end
